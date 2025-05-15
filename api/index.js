@@ -1,6 +1,14 @@
 export default async function handler(req, res) {
     const { chain = "solana", pair } = req.query;
   
+    // Secret key check
+    const SECRET = process.env.SECRET_KEY;
+    const clientSecret = req.headers['x-secret'];
+  
+    if (clientSecret !== SECRET) {
+      return res.status(403).json({ error: "Unauthorized" });
+    }
+  
     if (!pair) {
       return res.status(400).json({ error: "Missing `pair` query param" });
     }
