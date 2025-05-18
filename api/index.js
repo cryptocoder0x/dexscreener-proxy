@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Missing `tokenAddress` query param" });
     }
   
-    const url = `https://api.dexscreener.com/token-pairs/v1/${chainId}/${tokenAddress}`;
+    const url = `https://api.dexscreener.com/tokens/v1/${chainId}/${tokenAddresses}`;
   
     try {
       const response = await fetch(url, {
