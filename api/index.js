@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-    const { chain = "solana", pair } = req.query;
+    const { chainId = "solana", tokenAddress } = req.query;
   
     // Secret key check
     const SECRET = process.env.SECRET_KEY;
@@ -9,11 +9,11 @@ export default async function handler(req, res) {
       return res.status(403).json({ error: "Unauthorized" });
     }
   
-    if (!pair) {
-      return res.status(400).json({ error: "Missing `pair` query param" });
+    if (!tokenAddress) {
+      return res.status(400).json({ error: "Missing `tokenAddress` query param" });
     }
   
-    const url = `https://api.dexscreener.com/latest/dex/pairs/${chain}/${pair}`;
+    const url = `https://api.dexscreener.com/token-pairs/v1/${chainId}/${tokenAddress}`;
   
     try {
       const response = await fetch(url, {
