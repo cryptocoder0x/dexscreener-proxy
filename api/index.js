@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-    const { chainId = "solana", tokenAddress } = req.query;
+    const { chainId = "solana", tokenAddresses } = req.query;
   
     // Secret key check
     const SECRET = process.env.SECRET_KEY;
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       return res.status(403).json({ error: "Unauthorized" });
     }
   
-    if (!tokenAddress) {
+    if (!tokenAddresses) {
       return res.status(400).json({ error: "Missing `tokenAddress` query param" });
     }
   
