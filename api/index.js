@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     }
   
     if (!tokenAddresses) {
-      return res.status(400).json({ error: "Missing `tokenAddress` query param" });
+      return res.status(400).json({ error: "Missing `tokenAddresses` query param" });
     }
   
     const url = `https://api.dexscreener.com/tokens/v1/${chainId}/${tokenAddresses}`;
