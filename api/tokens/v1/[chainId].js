@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-    const { chainId = "solana", tokenAddresses } = req.query;
+    const { chainId = "avalanche", tokenAddresses } = req.query;
   
     // Secret key check
     const SECRET = process.env.SECRET_KEY;
